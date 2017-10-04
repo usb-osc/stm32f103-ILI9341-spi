@@ -83,9 +83,13 @@ int main(void)
   lcd_reset();
   HAL_GPIO_WritePin(GPIOA, LCD_LED_Pin, GPIO_PIN_SET);
   ILI9341_begin(&hspi1);
+
+  ILI9341_setRotation(0); // clear display & draw grid
   ILI9341_fillScreen(ILI9341_BLACK);
   ILI9341_setRotation(3);
   ILI9341_fillScreen(ILI9341_BLACK);
+  for(uint16_t i = 5; i<315; i+=30) ILI9341_drawLine( i, 5, i, 235, ILI9341_WHITE);
+  for(uint16_t i = 5; i<315; i+=30) ILI9341_drawLine( 5, i, 315, i, ILI9341_WHITE);
 
   /* USER CODE END 2 */
 
